@@ -1,0 +1,1 @@
+This is a lightweight rust program to monitor a directory and log when folders are moved (into subfolders in the current dir) or deleted.
