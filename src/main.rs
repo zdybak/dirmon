@@ -44,14 +44,14 @@ fn main() {
     for entry in std::fs::read_dir(watch_path).unwrap() {
         if let Ok(entry) = entry {
             if entry.path().is_dir() {
-                let message = format!("Initially found directory: {:?}", entry.path());
-                write_to_log(&message, &est_offset).unwrap();
+                //let message = format!("Initially found directory: {:?}", entry.path());
+                //write_to_log(&message, &est_offset).unwrap();
                 known_directories.insert(entry.path());
             }
         }
     }
 
-    let config = Config::default().with_poll_interval(Duration::from_secs(1));
+    let config = Config::default().with_poll_interval(Duration::from_secs(60));
     let mut watcher = PollWatcher::new(tx, config).unwrap();
 
     watcher.watch(watch_path, RecursiveMode::Recursive).unwrap();
